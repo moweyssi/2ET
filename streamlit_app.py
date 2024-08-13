@@ -54,9 +54,9 @@ hover_data = ['Product Number',
               'CAGR Start Year', 
               'CAGR End Year']
 
-x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index='Product complexity index')
-y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index='Current RCA')
-markersize = st.sidebar.selectbox("Select size variable", plot_columns,index='equal size')
+x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index=0)
+y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index=2)
+markersize = st.sidebar.selectbox("Select size variable", plot_columns,index=-1)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
 # Plotting
