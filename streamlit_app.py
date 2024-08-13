@@ -6,7 +6,7 @@ import plotly.express as px
 @st.cache
 def load_data():
     # Replace with the path to your data file
-    df = pd.read_excel("OEC_LSE_combined_v3_full navigator_JI_comments.csv")
+    df = pd.read_csv("OEC_LSE_combined_v3_full navigator_JI_comments.csv")
     return df
 
 df = load_data()
