@@ -14,7 +14,7 @@ def load_data():
 
 df = load_data()
 
-st.title("LOSEC Commander")
+st.title("LOSEC Czechia Navigator")
 
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
