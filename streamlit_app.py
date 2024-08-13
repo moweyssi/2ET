@@ -41,7 +41,8 @@ plot_columns = [
     'TradeValueCAGR',
     'Market Value CAGR', 
     'Market Share CAGR',
-    'HHI CAGR', 
+    'HHI CAGR'
+    'equal size', 
 ]
 hover_data = ['Product Number', 
               'HS6', 
