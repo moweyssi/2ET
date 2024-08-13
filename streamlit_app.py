@@ -61,7 +61,11 @@ color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
-df = df.dropna(subset=[x_axis, y_axis, color, markersize])
+#df = df.dropna(subset=[x_axis, y_axis, color, markersize])
+
+# Replace negative values in markersize column with zero
+df[markersize] = df[markersize].clip(lower=0)
+
 fig = px.scatter(df,
                  x=x_axis,
                  y=y_axis,
