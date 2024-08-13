@@ -55,7 +55,7 @@ hover_data = ['Product Number',
 
 x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns)
 y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns)
-size = st.sidebar.selectbox("Select size variable", plot_columns,index='equal size')
+size = st.sidebar.selectbox("Select size variable", plot_columns)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data)
 # Plotting
