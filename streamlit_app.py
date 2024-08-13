@@ -8,7 +8,7 @@ def load_data():
     # Replace with the path to your data file
     df = pd.read_csv("OEC_LSE_combined_v3_full navigator_JI_comments.csv")
     df = df[df.Included=="IN"]
-    df['equal size'] = 0.7
+    df['equal size'] = 0.3
 
     return df
 
@@ -54,9 +54,9 @@ hover_data = ['Product Number',
               'CAGR Start Year', 
               'CAGR End Year']
 
-x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns)
-y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns)
-markersize = st.sidebar.selectbox("Select size variable", plot_columns)
+x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index='Product complexity index')
+y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index='Current RCA')
+markersize = st.sidebar.selectbox("Select size variable", plot_columns,index='equal size')
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
 # Plotting
