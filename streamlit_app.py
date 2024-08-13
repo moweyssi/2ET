@@ -58,7 +58,7 @@ x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns)
 y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns)
 markersize = st.sidebar.selectbox("Select size variable", plot_columns)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
-hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data)
+hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
 df = df.dropna(subset=[x_axis, y_axis, color, markersize])
