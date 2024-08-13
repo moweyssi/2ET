@@ -11,7 +11,7 @@ def load_data():
 
 df = load_data()
 df = df[df.Included=="IN"]
-st.title("Data Visualization App")
+st.title("OECxLSE Commander")
 
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
