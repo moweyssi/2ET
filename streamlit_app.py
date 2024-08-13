@@ -69,7 +69,6 @@ fig = px.scatter(df,
                  hover_data=hover_info,
                  height=700,
                  marker=2,
-                 opacity=0.7,
                  size=size,
                  size_max=15)
 
