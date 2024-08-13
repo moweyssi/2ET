@@ -68,8 +68,8 @@ fig = px.scatter(df,
                  title=f'{x_axis} vs {y_axis} colored by {color}',
                  hover_data=hover_info,
                  height=700,
-                 marker=2,
-                 #size=size
-                 )
+                 opacity=0.7,
+                 size=size,
+                 size_max=15)
 
 st.plotly_chart(fig)
