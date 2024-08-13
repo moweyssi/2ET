@@ -57,6 +57,12 @@ hover_info = st.sidebar.multiselect("Select what info should appear on hover",ho
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
 
-fig = px.scatter(df, x=x_axis, y=y_axis, color=color, title=f'{x_axis} vs {y_axis} colored by {color}', hover_data=hover_info)
+fig = px.scatter(df,
+                 x=x_axis,
+                 y=y_axis,
+                 color=color,
+                 title=f'{x_axis} vs {y_axis} colored by {color}',
+                 hover_data=hover_info,
+                 height=700)
 
 st.plotly_chart(fig)
