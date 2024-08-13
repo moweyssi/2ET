@@ -7,10 +7,13 @@ st.set_page_config(layout="wide")
 def load_data():
     # Replace with the path to your data file
     df = pd.read_csv("OEC_LSE_combined_v3_full navigator_JI_comments.csv")
+    df = df[df.Included=="IN"]
+    df['equal size'] = 1
+
     return df
 
 df = load_data()
-df = df[df.Included=="IN"]
+
 st.title("OECxLSE Commander")
 
 # Sidebar for selecting variables
@@ -52,6 +55,7 @@ hover_data = ['Product Number',
 
 x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns)
 y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns)
+size = st.sidebar.selectbox("Select size variable", plot_columns,index='equal size')
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data)
 # Plotting
@@ -64,7 +68,9 @@ fig = px.scatter(df,
                  title=f'{x_axis} vs {y_axis} colored by {color}',
                  hover_data=hover_info,
                  height=700,
-                 size=2,
-                 opacity=0.7)
+                 marker=2,
+                 opacity=0.7,
+                 size=size,
+                 size_max=15)
 
 st.plotly_chart(fig)
