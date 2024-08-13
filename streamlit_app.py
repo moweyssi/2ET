@@ -69,7 +69,7 @@ fig = px.scatter(df,
                  hover_data=hover_info,
                  height=700,
                  marker=2,
-                 #size=size,
-                 size_max=15)
+                 #size=size
+                 )
 
 st.plotly_chart(fig)
