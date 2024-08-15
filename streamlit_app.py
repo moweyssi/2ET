@@ -59,27 +59,6 @@ y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index=2)
 markersize = st.sidebar.selectbox("Select size variable", plot_columns,index=14)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
-#st.sidebar.button("Add a filter")
-# Plotting
-st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
-#
-## Replace negative values in markersize column with zero
-#df = df.dropna(subset=[x_axis, y_axis, color, markersize])
-#df[markersize] = df[markersize].clip(lower=0)
-#
-#fig = px.scatter(df,
-#                 x=x_axis,
-#                 y=y_axis,
-#                 color=color,
-#                 title=f'{x_axis} vs {y_axis} colored by {color}',
-#                 hover_data=hover_info,
-#                 height=700,
-#                 opacity=0.7,
-#                 size=markersize,
-#                 size_max=15)
-#
-#st.plotly_chart(fig)
-
 
 # Filter section
 if 'filters' not in st.session_state:
