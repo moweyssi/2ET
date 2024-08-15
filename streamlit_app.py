@@ -59,7 +59,7 @@ y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index=2)
 markersize = st.sidebar.selectbox("Select size variable", plot_columns,index=14)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
-st.sidebar.button("Add a filter")
+#st.sidebar.button("Add a filter")
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
 #
