@@ -64,8 +64,13 @@ hover_info = st.sidebar.multiselect("Select what info should appear on hover",ho
 if 'filters' not in st.session_state:
     st.session_state.filters = []
 
-if st.sidebar.button("Add a filter"):
-    st.session_state.filters.append({'column': None, 'range': None})
+col1, col2 = st.sidebar.columns(2)
+with col1:
+    if st.button("Add a filter"):
+        st.session_state.filters.append({'column': None, 'range': None})
+with col2:
+    if st.button("Clear filters"):
+        st.session_state.filters = []
 
 # Display existing filters
 for i, filter in enumerate(st.session_state.filters):
