@@ -61,12 +61,56 @@ color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='HS6')
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
+#
+## Replace negative values in markersize column with zero
+#df = df.dropna(subset=[x_axis, y_axis, color, markersize])
+#df[markersize] = df[markersize].clip(lower=0)
+#
+#fig = px.scatter(df,
+#                 x=x_axis,
+#                 y=y_axis,
+#                 color=color,
+#                 title=f'{x_axis} vs {y_axis} colored by {color}',
+#                 hover_data=hover_info,
+#                 height=700,
+#                 opacity=0.7,
+#                 size=markersize,
+#                 size_max=15)
+#
+#st.plotly_chart(fig)
+
+
+# Filter section
+if 'filters' not in st.session_state:
+    st.session_state.filters = []
+
+if st.sidebar.button("Add a filter"):
+    st.session_state.filters.append({'column': None, 'range': None})
+
+# Display existing filters
+for i, filter in enumerate(st.session_state.filters):
+    filter_col = st.sidebar.selectbox(f"Filter {i+1} column", plot_columns, key=f"filter_col_{i}")
+    filter_min, filter_max = df[filter_col].min(), df[filter_col].max()
+    filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
+    st.session_state.filters[i]['column'] = filter_col
+    st.session_state.filters[i]['range'] = filter_range
+
+# Apply filters to dataframe
+filtered_df = df.copy()
+for filter in st.session_state.filters:
+    if filter['column'] is not None and filter['range'] is not None:
+        filtered_df = filtered_df[
+            (filtered_df[filter['column']] >= filter['range'][0]) &
+            (filtered_df[filter['column']] <= filter['range'][1])
+        ]
 
 # Replace negative values in markersize column with zero
-df = df.dropna(subset=[x_axis, y_axis, color, markersize])
-df[markersize] = df[markersize].clip(lower=0)
+filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 
-fig = px.scatter(df,
+# Plotting
+st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
+
+fig = px.scatter(filtered_df,
                  x=x_axis,
                  y=y_axis,
                  color=color,
