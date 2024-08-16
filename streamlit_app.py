@@ -91,6 +91,8 @@ for filter in st.session_state.filters:
 
 # Replace negative values in markersize column with zero
 filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
+# Remove NA values
+filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 # Plotting
 st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
