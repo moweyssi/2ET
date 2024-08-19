@@ -6,9 +6,9 @@ st.set_page_config(layout="wide")
 @st.cache
 def load_data():
     # Replace with the path to your data file
-    df = pd.read_csv("OEC_LSE_combined_v3_full navigator_JI_comments.csv")
+    df = pd.read_csv("Plna_databaze_produktu")
     df = df[df.Included=="IN"]
-    df['equal size'] = 0.02
+    df['stejna velikost'] = 0.02
 
     return df
 
@@ -20,39 +20,41 @@ st.title("LOSEC Czechia Navigator")
 st.sidebar.header("Select Variables for Scatter Plot")
 
 # Columns for (JI) groups
-ji_columns = ['Activity group (JI)',
-              'Activity subgroup (JI)',
-              'Item category (JI)',
-              'Environmental category',
+ji_columns = ['Skupina',
+              'Podskupina',
+              'Kategorie_vyrobku',
+              'Zdroj',
+              'IS_REALCAGR'
               ]
 
 # Columns for plotting
 plot_columns = [
-    'Product complexity index',
-    'Market concentration (HHI)',
-    'Current RCA',
-    '2022 Trade Value',
-    '2022 Trade Value Relatedness',
-    '2022 Trade Value RCA',
-    '2022 HHI',
-    '2022 Market share',
-    'PCI Rank',
-    'PCI',
-    'TradeValueCAGR',
-    'Market Value CAGR', 
-    'Market Share CAGR',
-    'HHI CAGR',
-    'equal size'
+'Pribuznost_CZ_2022',
+'Vyhoda_CZ_2022',
+'Koncentrace_trhu_2022',
+'Komplexita_vyrobku_2022',
+'CZ_export_2022',
+'EU_Import_2022',
+'CZ_Import_2022',
+'Svet_2022_export',
+'EU_export_2022',
+'EU_svetovy_podil_2022',
+'CZ_svetovy_podil_2022',
+'CZ_EU_podil_2022',
+'CZ_2030_export',
+'CZ_Total_Export_25_30',
+'EU_2030_export',
+'EU_Total_Export_25_30',
+'CAGR_2022_30_FORECAST',
+'stejna velikost'
 ]
-hover_data = ['Product Number', 
-              'HS6', 
-              'HS4', 
-              'HS2', 
-              'Country', 
-              'Environmental benefit', 
-              'Green ex-out',
-              'CAGR Start Year', 
-              'CAGR End Year']
+hover_data = ['HS_ID', 
+              'Produkt_HS6',
+              'Produkt_HS4',
+              'Produkt_HS2',
+              'EU_Total_Export_25_30',
+              'CZ_Total_Export_25_30'
+              ]
 
 x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index=0)
 y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index=2)
