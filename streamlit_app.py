@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 @st.cache
 def load_data():
     # Replace with the path to your data file
-    df = pd.read_csv("Plna_databaze_produktu")
+    df = pd.read_csv("Plna_databaze_produktu.csv")
     df = df[df.Included=="IN"]
     df['stejna velikost'] = 0.02
 
