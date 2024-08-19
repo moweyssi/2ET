@@ -45,7 +45,6 @@ plot_columns = [
 'EU_Total_Export_25_30',
 'CAGR_2022_30_FORECAST',
 'stejna velikost',
-'IS_REALCAGR'
 ]
 hover_data = ['HS_ID', 
               'Produkt_HS6',
@@ -53,7 +52,8 @@ hover_data = ['HS_ID',
               'Produkt_HS2',
               'EU_Total_Export_25_30',
               'CZ_Total_Export_25_30',
-              'Zdroj'
+              'Zdroj',
+              'IS_REALCAGR'
               ]
 
 x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index=0)
