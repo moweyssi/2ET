@@ -23,8 +23,6 @@ st.sidebar.header("Select Variables for Scatter Plot")
 ji_columns = ['Skupina',
               'Podskupina',
               'Kategorie_vyrobku',
-              'Zdroj',
-              'IS_REALCAGR'
               ]
 
 # Columns for plotting
@@ -46,14 +44,16 @@ plot_columns = [
 'EU_2030_export',
 'EU_Total_Export_25_30',
 'CAGR_2022_30_FORECAST',
-'stejna velikost'
+'stejna velikost',
+'IS_REALCAGR'
 ]
 hover_data = ['HS_ID', 
               'Produkt_HS6',
               'Produkt_HS4',
               'Produkt_HS2',
               'EU_Total_Export_25_30',
-              'CZ_Total_Export_25_30'
+              'CZ_Total_Export_25_30',
+              'Zdroj'
               ]
 
 x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index=0)
