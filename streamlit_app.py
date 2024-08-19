@@ -36,7 +36,7 @@ plot_columns = [
 'CZ_export_2022',
 'EU_Import_2022',
 'CZ_Import_2022',
-'Svet_2022_export',
+'Svet_export_2022',
 'EU_export_2022',
 'EU_svetovy_podil_2022',
 'CZ_svetovy_podil_2022',
