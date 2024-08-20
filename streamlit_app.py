@@ -62,6 +62,10 @@ markersize = st.sidebar.selectbox("Select size variable", plot_columns,index=14)
 color = st.sidebar.selectbox("Select color variable", ji_columns)
 hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='Produkt_HS6')
 
+# Sidebar for filtering the color variable
+color_values = df[color].unique()
+selected_colors = st.sidebar.multiselect(f"Filter by {color}", options=color_values, default=color_values)
+
 # Filter section
 if 'filters' not in st.session_state:
     st.session_state.filters = []
