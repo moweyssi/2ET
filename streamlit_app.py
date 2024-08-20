@@ -3,6 +3,12 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(layout="wide")
+st.title("LOSEC Czechia Navigator")
+
+# Sidebar for selecting variables
+st.sidebar.header("Select Variables for Scatter Plot")
+
+USD_to_czk = st.number_input("USD to CZK",value=22.5)
 
 # Load data
 @st.cache_data
@@ -19,10 +25,7 @@ def load_data():
 
 df = load_data()
 
-st.title("LOSEC Czechia Navigator")
 
-# Sidebar for selecting variables
-st.sidebar.header("Select Variables for Scatter Plot")
 
 # Column display names dictionary
 column_display_names = {
@@ -192,7 +195,6 @@ fig.update_traces(
 
 st.plotly_chart(fig)
 
-USD_to_czk = 22.5
 st.subheader("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']*USD_to_czk))+" CZK")
 st.subheader("CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']*USD_to_czk))+" CZK")
 st.subheader("EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']*USD_to_czk))+" CZK")
