@@ -11,9 +11,9 @@ def load_data():
     df = pd.read_csv("Plna_databaze_produktu.csv")
     df = df[df.Included == "IN"]
     df['stejna velikost'] = 0.02
-    df['CZ_EU_podil_2022'] = 100*df['CZ_EU_podil_2022'] 
-    df['EU_svetovy_podil_2022'] = 100*df['EU_svetovy_podil_2022'] 
-    df['CZ_svetovy_podil_2022'] = 100*df['CZ_svetovy_podil_2022'] 
+    df['CZ_EU_podil_2022'] = 100 * df['CZ_EU_podil_2022'] 
+    df['EU_svetovy_podil_2022'] = 100 * df['EU_svetovy_podil_2022'] 
+    df['CZ_svetovy_podil_2022'] = 100 * df['CZ_svetovy_podil_2022'] 
 
     return df
 
@@ -145,18 +145,8 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-# Define a function to format numbers for hover
-def format_hover_data(val):
-    if isinstance(val, (int, float)):
-        return f"{val:,.2f}"
-    else:
-        return val
-
-# Apply formatting to hover data
-hover_data_formatted = {
-    col: filtered_df[col].apply(format_hover_data) if col in hover_info else filtered_df[col]
-    for col in hover_info
-}
+# Define hover data
+hover_data = {col: True for col in hover_info}
 
 fig = px.scatter(filtered_df,
                  x=x_axis,
@@ -164,11 +154,24 @@ fig = px.scatter(filtered_df,
                  color=color,
                  labels={x_axis: x_axis_display, y_axis: y_axis_display},
                  title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
-                 hover_data=hover_data_formatted,
+                 hover_data=hover_data,
                  height=700,
                  opacity=0.7,
                  size=markersize,
                  size_max=15)
+
+# Update hover template to format numbers
+fig.update_traces(hovertemplate="<br>".join([
+    f"{col}: %{{customdata[{i}]}}<br>" for i, col in enumerate(hover_info)
+]))
+
+# Create a custom hover data array with formatted values
+def format_hover_values(row):
+    return [f"{row[col]:,.2f}" if isinstance(row[col], (int, float)) else row[col] for col in hover_info]
+
+fig.update_traces(
+    customdata=filtered_df.apply(format_hover_values, axis=1).tolist()
+)
 
 st.plotly_chart(fig)
 
