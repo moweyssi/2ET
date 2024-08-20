@@ -155,7 +155,7 @@ fig = px.scatter(filtered_df,
                  size_max=15)
 
 st.plotly_chart(fig)
-
-st.subheader("CZ Export 2022: "+ "${:,.0f}".format(sum(filtered_df['CZ_export_2022'])))
-st.subheader("CZ 2025 - 2030 Export: "+ "${:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30'])))
-st.subheader("EU 2025 - 2030 Export: "+ "${:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30'])))
+USD_to_czk = 22.5
+st.subheader("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']*USD_to_czk))+" CZK")
+st.subheader("CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']*USD_to_czk))+" CZK")
+st.subheader("EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']*USD_to_czk))+" CZK")
