@@ -23,27 +23,27 @@ st.sidebar.header("Select Variables for Scatter Plot")
 
 # Create a dictionary for display names and their corresponding column names
 column_display_names = {
-    'Skupina': 'Group',
-    'Podskupina': 'Subgroup',
-    'Kategorie_vyrobku': 'Product Category',
-    'Pribuznost_CZ_2022': 'CZ Similarity 2022',
-    'Vyhoda_CZ_2022': 'CZ Advantage 2022',
-    'Koncentrace_trhu_2022': 'Market Concentration 2022',
-    'Komplexita_vyrobku_2022': 'Product Complexity 2022',
+    'Skupina': 'Skupina',
+    'Podskupina': 'Podskupina',
+    'Kategorie_vyrobku': 'Kategorie výrobku',
+    'Pribuznost_CZ_2022': 'Příbuynost CZ 2022',
+    'Vyhoda_CZ_2022': 'Výhoda CZ 2022',
+    'Koncentrace_trhu_2022': 'Koncentrace trhu 2022',
+    'Komplexita_vyrobku_2022': 'Komplexita výrobku 2022',
     'CZ_export_2022': 'CZ Export 2022',
     'EU_Import_2022': 'EU Import 2022',
     'CZ_Import_2022': 'CZ Import 2022',
-    'Svet_export_2022': 'World Export 2022',
+    'Svet_export_2022': 'Světový export 2022',
     'EU_export_2022': 'EU Export 2022',
-    'EU_svetovy_podil_2022': 'EU Global Share 2022',
-    'CZ_svetovy_podil_2022': 'CZ Global Share 2022',
-    'CZ_EU_podil_2022': 'CZ-EU Share 2022',
+    'EU_svetovy_podil_2022': 'EU Světový Podíl 2022',
+    'CZ_svetovy_podil_2022': 'CZ Světový Podíl 2022',
+    'CZ_EU_podil_2022': 'CZ-EU Podíl 2022',
     'CZ_2030_export': 'CZ 2030 Export',
-    'CZ_Total_Export_25_30': 'CZ Total Export 25-30',
+    'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30',
     'EU_2030_export': 'EU 2030 Export',
-    'EU_Total_Export_25_30': 'EU Total Export 25-30',
-    'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Forecast',
-    'stejna velikost': 'Same Size'
+    'EU_Total_Export_25_30': 'EU Celkový Export 25-30',
+    'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Předpověď',
+    'stejna velikost': 'Stejná Velikost'
 }
 
 # Invert the dictionary to map display names back to column names
@@ -77,8 +77,8 @@ hover_display_data = [
     'Produkt_HS6',
     'Produkt_HS4',
     'Produkt_HS2',
-    'EU Total Export 25-30',
-    'CZ Total Export 25-30',
+    'EU Celkový Export 25-30',
+    'CZ Celkový Export 25-30',
     'Zdroj',
     'IS_REALCAGR'
 ]
