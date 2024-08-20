@@ -88,6 +88,9 @@ for i, filter in enumerate(st.session_state.filters):
 
 # Apply filters to dataframe
 filtered_df = df.copy()
+# Apply color filter
+filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
+
 for filter in st.session_state.filters:
     if filter['column'] is not None and filter['range'] is not None:
         filtered_df = filtered_df[
