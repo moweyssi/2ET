@@ -149,7 +149,8 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 def format_hover_data(val):
     if isinstance(val, (int, float)):
         return f"{val:,.2f}"
-    return val
+    else:
+        return val
 
 # Apply formatting to hover data
 hover_data_formatted = {
