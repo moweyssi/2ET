@@ -145,13 +145,25 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
+# Define a function to format numbers for hover
+def format_hover_data(val):
+    if isinstance(val, (int, float)):
+        return f"{val:,.2f}"
+    return val
+
+# Apply formatting to hover data
+hover_data_formatted = {
+    col: filtered_df[col].apply(format_hover_data) if col in hover_info else filtered_df[col]
+    for col in hover_info
+}
+
 fig = px.scatter(filtered_df,
                  x=x_axis,
                  y=y_axis,
                  color=color,
                  labels={x_axis: x_axis_display, y_axis: y_axis_display},
                  title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
-                 hover_data=hover_info,
+                 hover_data=hover_data_formatted,
                  height=700,
                  opacity=0.7,
                  size=markersize,
