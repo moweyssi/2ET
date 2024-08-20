@@ -26,7 +26,7 @@ column_display_names = {
     'Skupina': 'Skupina',
     'Podskupina': 'Podskupina',
     'Kategorie_vyrobku': 'Kategorie výrobku',
-    'Pribuznost_CZ_2022': 'Příbuynost CZ 2022',
+    'Pribuznost_CZ_2022': 'Příbuznost CZ 2022',
     'Vyhoda_CZ_2022': 'Výhoda CZ 2022',
     'Koncentrace_trhu_2022': 'Koncentrace trhu 2022',
     'Komplexita_vyrobku_2022': 'Komplexita výrobku 2022',
@@ -52,7 +52,7 @@ display_to_column = {v: k for k, v in column_display_names.items()}
 # Create lists of display names for the sidebar
 ji_display_names = ['Skupina', 'Podskupina', 'Kategorie výrobku']
 plot_display_names = [
-    'Příbuynost CZ 2022',
+    'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
     'Koncentrace trhu 2022',
     'Komplexita výrobku 2022',
