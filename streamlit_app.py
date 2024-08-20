@@ -21,7 +21,7 @@ st.title("LOSEC Czechia Navigator")
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
 
-# Create a dictionary for display names and their corresponding column names
+# Column display names dictionary
 column_display_names = {
     'Skupina': 'Skupina',
     'Podskupina': 'Podskupina',
@@ -50,26 +50,26 @@ column_display_names = {
 display_to_column = {v: k for k, v in column_display_names.items()}
 
 # Create lists of display names for the sidebar
-ji_display_names = ['Group', 'Subgroup', 'Product Category']
+ji_display_names = ['Skupina', 'Podskupina', 'Kategorie výrobku']
 plot_display_names = [
-    'CZ Similarity 2022',
-    'CZ Advantage 2022',
-    'Market Concentration 2022',
-    'Product Complexity 2022',
+    'Příbuynost CZ 2022',
+    'Výhoda CZ 2022',
+    'Koncentrace trhu 2022',
+    'Komplexita výrobku 2022',
     'CZ Export 2022',
     'EU Import 2022',
     'CZ Import 2022',
-    'World Export 2022',
+    'Světový export 2022',
     'EU Export 2022',
-    'EU Global Share 2022',
-    'CZ Global Share 2022',
-    'CZ-EU Share 2022',
+    'EU Světový Podíl 2022',
+    'CZ Světový Podíl 2022',
+    'CZ-EU Podíl 2022',
     'CZ 2030 Export',
-    'CZ Total Export 25-30',
+    'CZ Celkový Export 25-30',
     'EU 2030 Export',
-    'EU Total Export 25-30',
-    'CAGR 2022-2030 Forecast',
-    'Same Size'
+    'EU Celkový Export 25-30',
+    'CAGR 2022-2030 Předpověď',
+    'Stejná Velikost'
 ]
 
 hover_display_data = [
