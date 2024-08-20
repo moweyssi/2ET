@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-st.set_page_config(layout="wide") 
+
+st.set_page_config(layout="wide")
+
 # Load data
-@st.cache
+@st.cache_data
 def load_data():
     # Replace with the path to your data file
     df = pd.read_csv("Plna_databaze_produktu.csv")
-    df = df[df.Included=="IN"]
+    df = df[df.Included == "IN"]
     df['stejna velikost'] = 0.02
 
     return df
@@ -19,52 +21,85 @@ st.title("LOSEC Czechia Navigator")
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
 
-# Columns for (JI) groups
-ji_columns = ['Skupina',
-              'Podskupina',
-              'Kategorie_vyrobku',
-              ]
+# Create a dictionary for display names and their corresponding column names
+column_display_names = {
+    'Skupina': 'Group',
+    'Podskupina': 'Subgroup',
+    'Kategorie_vyrobku': 'Product Category',
+    'Pribuznost_CZ_2022': 'CZ Similarity 2022',
+    'Vyhoda_CZ_2022': 'CZ Advantage 2022',
+    'Koncentrace_trhu_2022': 'Market Concentration 2022',
+    'Komplexita_vyrobku_2022': 'Product Complexity 2022',
+    'CZ_export_2022': 'CZ Export 2022',
+    'EU_Import_2022': 'EU Import 2022',
+    'CZ_Import_2022': 'CZ Import 2022',
+    'Svet_export_2022': 'World Export 2022',
+    'EU_export_2022': 'EU Export 2022',
+    'EU_svetovy_podil_2022': 'EU Global Share 2022',
+    'CZ_svetovy_podil_2022': 'CZ Global Share 2022',
+    'CZ_EU_podil_2022': 'CZ-EU Share 2022',
+    'CZ_2030_export': 'CZ 2030 Export',
+    'CZ_Total_Export_25_30': 'CZ Total Export 25-30',
+    'EU_2030_export': 'EU 2030 Export',
+    'EU_Total_Export_25_30': 'EU Total Export 25-30',
+    'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Forecast',
+    'stejna velikost': 'Same Size'
+}
 
-# Columns for plotting
-plot_columns = [
-'Pribuznost_CZ_2022',
-'Vyhoda_CZ_2022',
-'Koncentrace_trhu_2022',
-'Komplexita_vyrobku_2022',
-'CZ_export_2022',
-'EU_Import_2022',
-'CZ_Import_2022',
-'Svet_export_2022',
-'EU_export_2022',
-'EU_svetovy_podil_2022',
-'CZ_svetovy_podil_2022',
-'CZ_EU_podil_2022',
-'CZ_2030_export',
-'CZ_Total_Export_25_30',
-'EU_2030_export',
-'EU_Total_Export_25_30',
-'CAGR_2022_30_FORECAST',
-'stejna velikost'
+# Invert the dictionary to map display names back to column names
+display_to_column = {v: k for k, v in column_display_names.items()}
+
+# Create lists of display names for the sidebar
+ji_display_names = ['Group', 'Subgroup', 'Product Category']
+plot_display_names = [
+    'CZ Similarity 2022',
+    'CZ Advantage 2022',
+    'Market Concentration 2022',
+    'Product Complexity 2022',
+    'CZ Export 2022',
+    'EU Import 2022',
+    'CZ Import 2022',
+    'World Export 2022',
+    'EU Export 2022',
+    'EU Global Share 2022',
+    'CZ Global Share 2022',
+    'CZ-EU Share 2022',
+    'CZ 2030 Export',
+    'CZ Total Export 25-30',
+    'EU 2030 Export',
+    'EU Total Export 25-30',
+    'CAGR 2022-2030 Forecast',
+    'Same Size'
 ]
-hover_data = ['HS_ID', 
-              'Produkt_HS6',
-              'Produkt_HS4',
-              'Produkt_HS2',
-              'EU_Total_Export_25_30',
-              'CZ_Total_Export_25_30',
-              'Zdroj',
-              'IS_REALCAGR'
-              ]
 
-x_axis = st.sidebar.selectbox("Select X-axis variable", plot_columns,index=0)
-y_axis = st.sidebar.selectbox("Select Y-axis variable", plot_columns,index=2)
-markersize = st.sidebar.selectbox("Select size variable", plot_columns,index=14)
-color = st.sidebar.selectbox("Select color variable", ji_columns)
-hover_info = st.sidebar.multiselect("Select what info should appear on hover",hover_data,default='Produkt_HS6')
+hover_display_data = [
+    'HS_ID',
+    'Produkt_HS6',
+    'Produkt_HS4',
+    'Produkt_HS2',
+    'EU Total Export 25-30',
+    'CZ Total Export 25-30',
+    'Zdroj',
+    'IS_REALCAGR'
+]
+
+# Sidebar selection boxes using display names
+x_axis_display = st.sidebar.selectbox("Select X-axis variable", plot_display_names, index=0)
+y_axis_display = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
+markersize_display = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
+color_display = st.sidebar.selectbox("Select color variable", ji_display_names)
+hover_info_display = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6')
+
+# Map display names back to column names
+x_axis = display_to_column[x_axis_display]
+y_axis = display_to_column[y_axis_display]
+markersize = display_to_column[markersize_display]
+color = display_to_column[color_display]
+hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 
 # Sidebar for filtering the color variable
 color_values = df[color].unique()
-selected_colors = st.sidebar.multiselect(f"Filter by {color}", options=color_values, default=color_values)
+selected_colors = st.sidebar.multiselect(f"Filter by {color_display}", options=color_values, default=color_values)
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -78,9 +113,10 @@ with col2:
     if st.button("Clear filters"):
         st.session_state.filters = []
 
-# Display existing filters
+# Display existing filters using display names
 for i, filter in enumerate(st.session_state.filters):
-    filter_col = st.sidebar.selectbox(f"Filter {i+1} column", plot_columns, key=f"filter_col_{i}")
+    filter_col_display = st.sidebar.selectbox(f"Filter {i+1} column", plot_display_names, key=f"filter_col_{i}")
+    filter_col = display_to_column[filter_col_display]
     filter_min, filter_max = df[filter_col].min(), df[filter_col].max()
     filter_range = st.sidebar.slider(f"Filter {i+1} range", float(filter_min), float(filter_max), (float(filter_min), float(filter_max)), key=f"filter_range_{i}")
     st.session_state.filters[i]['column'] = filter_col
@@ -88,9 +124,11 @@ for i, filter in enumerate(st.session_state.filters):
 
 # Apply filters to dataframe
 filtered_df = df.copy()
+
 # Apply color filter
 filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
+# Apply numerical filters
 for filter in st.session_state.filters:
     if filter['column'] is not None and filter['range'] is not None:
         filtered_df = filtered_df[
@@ -100,17 +138,18 @@ for filter in st.session_state.filters:
 
 # Replace negative values in markersize column with zero
 filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
+
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 # Plotting
-st.header(f"Scatter Plot of {x_axis} vs {y_axis}")
+st.header(f"Scatter Plot of {x_axis_display} vs {y_axis_display}")
 
 fig = px.scatter(filtered_df,
                  x=x_axis,
                  y=y_axis,
                  color=color,
-                 title=f'{x_axis} vs {y_axis} colored by {color}',
+                 title=f'{x_axis_display} vs {y_axis_display} colored by {color_display}',
                  hover_data=hover_info,
                  height=700,
                  opacity=0.7,
