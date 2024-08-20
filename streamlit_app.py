@@ -118,3 +118,5 @@ fig = px.scatter(filtered_df,
                  size_max=15)
 
 st.plotly_chart(fig)
+
+st.subheader("CZ 2025 - 2030 Export: "+ str(sum(filtered_df['CZ_Total_Export_25_30'])))
