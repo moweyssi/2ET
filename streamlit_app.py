@@ -29,6 +29,7 @@ def load_data():
     df['CZ_Total_Export_25_30'] = USD_to_czk*df['CZ_Total_Export_25_30'] 
     df['EU_2030_export'] = USD_to_czk*df['EU_2030_export'] 
     df['CZ_2030_export'] = USD_to_czk*df['CZ_2030_export'] 
+    df['HS_ID'] = df['HS_ID'].astype(str)
 
     return df
 
