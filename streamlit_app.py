@@ -11,6 +11,9 @@ def load_data():
     df = pd.read_csv("Plna_databaze_produktu.csv")
     df = df[df.Included == "IN"]
     df['stejna velikost'] = 0.02
+    df['CZ_EU_podil_2022'] = 100*df['CZ_EU_podil_2022'] 
+    df['EU_svetovy_podil_2022'] = 100*df['EU_svetovy_podil_2022'] 
+    df['CZ_svetovy_podil_2022'] = 100*df['CZ_svetovy_podil_2022'] 
 
     return df
 
@@ -35,9 +38,9 @@ column_display_names = {
     'CZ_Import_2022': 'CZ Import 2022 $',
     'Svet_export_2022': 'Světový export 2022 $',
     'EU_export_2022': 'EU Export 2022 $',
-    'EU_svetovy_podil_2022': 'EU Světový Podíl 2022',
-    'CZ_svetovy_podil_2022': 'CZ Světový Podíl 2022',
-    'CZ_EU_podil_2022': 'CZ-EU Podíl 2022',
+    'EU_svetovy_podil_2022': 'EU Světový Podíl 2022 %',
+    'CZ_svetovy_podil_2022': 'CZ Světový Podíl 2022 %',
+    'CZ_EU_podil_2022': 'CZ-EU Podíl 2022 %',
     'CZ_2030_export': 'CZ 2030 Export $',
     'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30 $',
     'EU_2030_export': 'EU 2030 Export',
@@ -61,9 +64,9 @@ plot_display_names = [
     'CZ Import 2022 $',
     'Světový export 2022 $',
     'EU Export 2022 $',
-    'EU Světový Podíl 2022',
-    'CZ Světový Podíl 2022',
-    'CZ-EU Podíl 2022',
+    'EU Světový Podíl 2022 %',
+    'CZ Světový Podíl 2022 %',
+    'CZ-EU Podíl 2022 %',
     'CZ 2030 Export $',
     'CZ Celkový Export 25-30 $',
     'EU 2030 Export',
