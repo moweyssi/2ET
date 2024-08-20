@@ -8,7 +8,7 @@ st.title("LOSEC Czechia Navigator")
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
 
-USD_to_czk = st.number_input("USD to CZK",value=22.5)
+USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 
 # Load data
 @st.cache_data
