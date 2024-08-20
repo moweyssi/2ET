@@ -20,6 +20,15 @@ def load_data():
     df['CZ_EU_podil_2022'] = 100 * df['CZ_EU_podil_2022'] 
     df['EU_svetovy_podil_2022'] = 100 * df['EU_svetovy_podil_2022'] 
     df['CZ_svetovy_podil_2022'] = 100 * df['CZ_svetovy_podil_2022'] 
+    df['CZ_export_2022'] = USD_to_czk*df['CZ_export_2022'] 
+    df['EU_Import_2022'] = USD_to_czk*df['EU_Import_2022'] 
+    df['CZ_Import_2022'] = USD_to_czk*df['CZ_Import_2022'] 
+    df['Svet_export_2022'] = USD_to_czk*df['Svet_export_2022'] 
+    df['EU_export_2022'] = USD_to_czk*df['EU_export_2022'] 
+    df['EU_Total_Export_25_30'] = USD_to_czk*df['EU_Total_Export_25_30'] 
+    df['CZ_Total_Export_25_30'] = USD_to_czk*df['CZ_Total_Export_25_30'] 
+    df['EU_2030_export'] = USD_to_czk*df['EU_2030_export'] 
+    df['CZ_2030_export'] = USD_to_czk*df['CZ_2030_export'] 
 
     return df
 
@@ -36,18 +45,18 @@ column_display_names = {
     'Vyhoda_CZ_2022': 'Výhoda CZ 2022',
     'Koncentrace_trhu_2022': 'Koncentrace trhu 2022',
     'Komplexita_vyrobku_2022': 'Komplexita výrobku 2022',
-    'CZ_export_2022': 'CZ Export 2022 $',
-    'EU_Import_2022': 'EU Import 2022 $',
-    'CZ_Import_2022': 'CZ Import 2022 $',
-    'Svet_export_2022': 'Světový export 2022 $',
-    'EU_export_2022': 'EU Export 2022 $',
+    'CZ_export_2022': 'CZ Export 2022 CZK',
+    'EU_Import_2022': 'EU Import 2022 CZK',
+    'CZ_Import_2022': 'CZ Import 2022 CZK',
+    'Svet_export_2022': 'Světový export 2022 CZK',
+    'EU_export_2022': 'EU Export 2022 CZK',
     'EU_svetovy_podil_2022': 'EU Světový Podíl 2022 %',
     'CZ_svetovy_podil_2022': 'CZ Světový Podíl 2022 %',
     'CZ_EU_podil_2022': 'CZ-EU Podíl 2022 %',
-    'CZ_2030_export': 'CZ 2030 Export $',
-    'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30 $',
+    'CZ_2030_export': 'CZ 2030 Export CZK',
+    'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30 CZK',
     'EU_2030_export': 'EU 2030 Export',
-    'EU_Total_Export_25_30': 'EU Celkový Export 25-30 $',
+    'EU_Total_Export_25_30': 'EU Celkový Export 25-30 CZK',
     'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Předpověď',
     'stejna velikost': 'Stejná Velikost'
 }
@@ -62,18 +71,18 @@ plot_display_names = [
     'Výhoda CZ 2022',
     'Koncentrace trhu 2022',
     'Komplexita výrobku 2022',
-    'CZ Export 2022 $',
-    'EU Import 2022 $',
-    'CZ Import 2022 $',
-    'Světový export 2022 $',
-    'EU Export 2022 $',
+    'CZ Export 2022 CZK',
+    'EU Import 2022 CZK',
+    'CZ Import 2022 CZK',
+    'Světový export 2022 CZK',
+    'EU Export 2022 CZK',
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
-    'CZ 2030 Export $',
-    'CZ Celkový Export 25-30 $',
+    'CZ 2030 Export CZK',
+    'CZ Celkový Export 25-30 CZK',
     'EU 2030 Export',
-    'EU Celkový Export 25-30 $',
+    'EU Celkový Export 25-30 CZK',
     'CAGR 2022-2030 Předpověď',
     'Stejná Velikost'
 ]
@@ -82,25 +91,24 @@ hover_display_data = [
     'HS_ID',
     'Produkt_HS6',
     'Produkt_HS4',
-    'Produkt_HS2',
-    'EU Celkový Export 25-30 $',
-    'CZ Celkový Export 25-30 $',
+    'Produkt_HS2',,
+    'CZ Celkový Export 25-30 CZK',
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
     'Koncentrace trhu 2022',
     'Komplexita výrobku 2022',
-    'CZ Export 2022 $',
-    'EU Import 2022 $',
-    'CZ Import 2022 $',
-    'Světový export 2022 $',
-    'EU Export 2022 $',
+    'CZ Export 2022 CZK',
+    'EU Import 2022 CZK',
+    'CZ Import 2022 CZK',
+    'Světový export 2022 CZK',
+    'EU Export 2022 CZK',
     'EU Světový Podíl 2022 %',
     'CZ Světový Podíl 2022 %',
     'CZ-EU Podíl 2022 %',
-    'CZ 2030 Export $',
-    'CZ Celkový Export 25-30 $',
+    'CZ 2030 Export CZK',
+    'CZ Celkový Export 25-30 CZK',
     'EU 2030 Export',
-    'EU Celkový Export 25-30 $',
+    'EU Celkový Export 25-30 CZK',
     'CAGR 2022-2030 Předpověď',
     'Zdroj',
     'IS_REALCAGR'
