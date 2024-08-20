@@ -81,7 +81,7 @@ plot_display_names = [
     'CZ-EU Podíl 2022 %',
     'CZ 2030 Export CZK',
     'CZ Celkový Export 25-30 CZK',
-    'EU 2030 Export',
+    'EU 2030 Export CZK',
     'EU Celkový Export 25-30 CZK',
     'CAGR 2022-2030 Předpověď',
     'Stejná Velikost'
