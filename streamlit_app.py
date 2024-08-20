@@ -142,9 +142,6 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-# Plotting
-st.header(f"{x_axis_display} vs {y_axis_display}")
-
 fig = px.scatter(filtered_df,
                  x=x_axis,
                  y=y_axis,
