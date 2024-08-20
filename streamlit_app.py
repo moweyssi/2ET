@@ -91,7 +91,7 @@ hover_display_data = [
     'HS_ID',
     'Produkt_HS6',
     'Produkt_HS4',
-    'Produkt_HS2',,
+    'Produkt_HS2',
     'CZ Celkový Export 25-30 CZK',
     'Příbuznost CZ 2022',
     'Výhoda CZ 2022',
