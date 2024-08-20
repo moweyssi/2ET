@@ -202,7 +202,8 @@ fig.update_traces(
 )
 
 st.plotly_chart(fig)
+st.subheader("Big picture:")
+st.code("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']*USD_to_czk))+" CZK\n"+
+        "CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']*USD_to_czk))+" CZK\n"+
+        "EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']*USD_to_czk))+" CZK")
 
-st.subheader("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']*USD_to_czk))+" CZK")
-st.subheader("CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']*USD_to_czk))+" CZK")
-st.subheader("EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']*USD_to_czk))+" CZK")
