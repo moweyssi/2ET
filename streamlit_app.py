@@ -158,7 +158,7 @@ for i, filter in enumerate(st.session_state.filters):
 filtered_df = df.copy()
 
 # Apply color filter
-#filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
+filtered_df = filtered_df[filtered_df[color].isin(selected_colors)]
 
 # Apply numerical filters
 for filter in st.session_state.filters:
