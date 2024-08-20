@@ -55,7 +55,7 @@ column_display_names = {
     'CZ_EU_podil_2022': 'CZ-EU Podíl 2022 %',
     'CZ_2030_export': 'CZ 2030 Export CZK',
     'CZ_Total_Export_25_30': 'CZ Celkový Export 25-30 CZK',
-    'EU_2030_export': 'EU 2030 Export',
+    'EU_2030_export': 'EU 2030 Export CZK',
     'EU_Total_Export_25_30': 'EU Celkový Export 25-30 CZK',
     'CAGR_2022_30_FORECAST': 'CAGR 2022-2030 Předpověď',
     'stejna velikost': 'Stejná Velikost'
