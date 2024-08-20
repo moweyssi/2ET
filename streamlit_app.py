@@ -183,24 +183,24 @@ fig = px.scatter(filtered_df,
                  color=color,
                  labels={x_axis: x_axis_display, y_axis: y_axis_display},
                  title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
-                 #hover_data=hover_data,
+                 hover_data=hover_data,
                  height=700,
                  opacity=0.7,
                  size=markersize,
                  size_max=15)
 
 # Update hover template to format numbers
-fig.update_traces(hovertemplate="<br>".join([
-    f"{col}: %{{customdata[{i}]}}<br>" for i, col in enumerate(hover_info)
-]))
+#fig.update_traces(hovertemplate="<br>".join([
+#    f"{col}: %{{customdata[{i}]}}<br>" for i, col in enumerate(hover_info)
+#]))
 
 # Create a custom hover data array with formatted values
-def format_hover_values(row):
-    return [f"{row[col]:,.2f}" if isinstance(row[col], (int, float)) else row[col] for col in hover_info]
-
-fig.update_traces(
-    customdata=filtered_df.apply(format_hover_values, axis=1).tolist()
-)
+#def format_hover_values(row):
+#    return [f"{row[col]:,.2f}" if isinstance(row[col], (int, float)) else row[col] for col in hover_info]
+#
+#fig.update_traces(
+#    customdata=filtered_df.apply(format_hover_values, axis=1).tolist()
+#)
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
