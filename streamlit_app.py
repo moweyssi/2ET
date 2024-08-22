@@ -18,7 +18,7 @@ def load_data():
     #df = pd.read_csv("Plna_databaze_produktu.csv")
     url = 'https://docs.google.com/spreadsheets/d/1M4_XVEXApUbnklbRwX1dqDVYIDStX4Uk/pub?gid=891291031&single=true&output=csv'
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    df = pd.read_csv(path)
+    df = pd.read_csv(url)
     df = df[df.Included == "IN"]
     df['stejna velikost'] = 0.02
     df['CZ_EU_podil_2022'] = 100 * df['CZ_EU_podil_2022'] 
