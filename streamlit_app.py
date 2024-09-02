@@ -16,23 +16,23 @@ USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 def load_data():
     # Replace with the path to your data file
     #df = pd.read_csv("Plna_databaze_produktu.csv")
-    url = 'https://docs.google.com/spreadsheets/d/1M4_XVEXApUbnklbRwX1dqDVYIDStX4Uk/pub?gid=891291031&single=true&output=csv'
-    df = pd.read_csv(url)
-    df = df[df.Included == "IN"]
-    df['stejna velikost'] = 0.02
-    df['CZ_EU_podil_2022'] = 100 * df['CZ_EU_podil_2022'] 
+    url                         = 'https://docs.google.com/spreadsheets/d/1M4_XVEXApUbnklbRwX1dqDVYIDStX4Uk/pub?gid=891291031&single=true&output=csv'
+    df                          = pd.read_csv(url)
+    df                          = df[df.Included == "IN"]
+    df['stejna velikost']       = 0.02
+    df['CZ_EU_podil_2022']      = 100 * df['CZ_EU_podil_2022'] 
     df['EU_svetovy_podil_2022'] = 100 * df['EU_svetovy_podil_2022'] 
     df['CZ_svetovy_podil_2022'] = 100 * df['CZ_svetovy_podil_2022'] 
-    df['CZ_export_2022'] = USD_to_czk*df['CZ_export_2022'] 
-    df['EU_Import_2022'] = USD_to_czk*df['EU_Import_2022'] 
-    df['CZ_Import_2022'] = USD_to_czk*df['CZ_Import_2022'] 
-    df['Svet_export_2022'] = USD_to_czk*df['Svet_export_2022'] 
-    df['EU_export_2022'] = USD_to_czk*df['EU_export_2022'] 
+    df['CZ_export_2022']        = USD_to_czk*df['CZ_export_2022'] 
+    df['EU_Import_2022']        = USD_to_czk*df['EU_Import_2022'] 
+    df['CZ_Import_2022']        = USD_to_czk*df['CZ_Import_2022'] 
+    df['Svet_export_2022']      = USD_to_czk*df['Svet_export_2022'] 
+    df['EU_export_2022']        = USD_to_czk*df['EU_export_2022'] 
     df['EU_Total_Export_25_30'] = USD_to_czk*df['EU_Total_Export_25_30'] 
     df['CZ_Total_Export_25_30'] = USD_to_czk*df['CZ_Total_Export_25_30'] 
-    df['EU_2030_export'] = USD_to_czk*df['EU_2030_export'] 
-    df['CZ_2030_export'] = USD_to_czk*df['CZ_2030_export'] 
-    df['HS_ID'] = df['HS_ID'].astype(str)
+    df['EU_2030_export']        = USD_to_czk*df['EU_2030_export'] 
+    df['CZ_2030_export']        = USD_to_czk*df['CZ_2030_export'] 
+    df['HS_ID']                 = df['HS_ID'].astype(str)
 
     return df
 
@@ -124,21 +124,21 @@ hover_display_data = [
 ]
 
 # Sidebar selection boxes using display names
-x_axis_display = st.sidebar.selectbox("Select X-axis variable", plot_display_names, index=0)
-y_axis_display = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
-markersize_display = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
-color_display = st.sidebar.selectbox("Select color variable", ji_display_names)
-hover_info_display = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6')
+x_axis_display      = st.sidebar.selectbox("Select X-axis variable", plot_display_names, index=0)
+y_axis_display      = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
+markersize_display  = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
+color_display       = st.sidebar.selectbox("Select color variable", ji_display_names)
+hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6')
 
 # Map display names back to column names
-x_axis = display_to_column[x_axis_display]
-y_axis = display_to_column[y_axis_display]
+x_axis     = display_to_column[x_axis_display]
+y_axis     = display_to_column[y_axis_display]
 markersize = display_to_column[markersize_display]
-color = display_to_column[color_display]
+color      = display_to_column[color_display]
 hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 
 # Sidebar for filtering the color variable
-color_values = df[color].unique()
+color_values    = df[color].unique()
 selected_colors = st.sidebar.multiselect(f"Filter by {color_display}", options=color_values, default=color_values)
 
 # Filter section
@@ -197,18 +197,6 @@ fig = px.scatter(filtered_df,
                  size=markersize,
                  size_max=15)
 
-# Update hover template to format numbers
-#fig.update_traces(hovertemplate="<br>".join([
-#    f"{col}: %{{customdata[{i}]}}<br>" for i, col in enumerate(hover_info)
-#]))
-
-# Create a custom hover data array with formatted values
-#def format_hover_values(row):
-#    return [f"{row[col]:,.2f}" if isinstance(row[col], (int, float)) else row[col] for col in hover_info]
-#
-#fig.update_traces(
-#    customdata=filtered_df.apply(format_hover_values, axis=1).tolist()
-#)
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
