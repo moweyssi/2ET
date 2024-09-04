@@ -195,7 +195,7 @@ fig = px.scatter(filtered_df,
                  height=700,
                  opacity=0.7,
                  size=markersize,
-                 size_max=15)
+                 size_max=40)
 
 
 st.plotly_chart(fig)
