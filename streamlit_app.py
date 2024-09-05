@@ -184,7 +184,6 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 HS_select = st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
 # Define hover data
 hover_data = {col: True for col in hover_info}
-st.text(HS_select)
 if HS_select == []:
     fig = px.scatter(filtered_df,
                      x=x_axis,
