@@ -181,6 +181,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
+st.sidebar.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
 # Define hover data
 hover_data = {col: True for col in hover_info}
 
