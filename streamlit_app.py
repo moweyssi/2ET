@@ -198,7 +198,7 @@ if HS_select == None:
                      size_max=40)
 
 else:
-    fig = px.scatter(filtered_df[filtered_df['Produkt_HS6'] in HS_select],
+    fig = px.scatter(filtered_df[filtered_df['Produkt_HS6'].isin(HS_select)],
                      x=x_axis,
                      y=y_axis,
                      color=color,
