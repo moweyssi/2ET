@@ -185,7 +185,7 @@ HS_select = st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
 # Define hover data
 hover_data = {col: True for col in hover_info}
 st.text(HS_select)
-if HS_select == None:
+if HS_select == []:
     fig = px.scatter(filtered_df,
                      x=x_axis,
                      y=y_axis,
