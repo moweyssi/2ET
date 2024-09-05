@@ -181,22 +181,34 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
+HS_select = st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
 # Define hover data
 hover_data = {col: True for col in hover_info}
+if HS_select == None:
+    fig = px.scatter(filtered_df,
+                     x=x_axis,
+                     y=y_axis,
+                     color=color,
+                     labels={x_axis: x_axis_display, y_axis: y_axis_display},
+                     title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
+                     hover_data=hover_data,
+                     height=700,
+                     opacity=0.7,
+                     size=markersize,
+                     size_max=40)
 
-fig = px.scatter(filtered_df,
-                 x=x_axis,
-                 y=y_axis,
-                 color=color,
-                 labels={x_axis: x_axis_display, y_axis: y_axis_display},
-                 title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
-                 hover_data=hover_data,
-                 height=700,
-                 opacity=0.7,
-                 size=markersize,
-                 size_max=40)
-
+else:
+    fig = px.scatter(filtered_df[filtered_df['Produkt_HS6'] in HS_select],
+                     x=x_axis,
+                     y=y_axis,
+                     color=color,
+                     labels={x_axis: x_axis_display, y_axis: y_axis_display},
+                     title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
+                     hover_data=hover_data,
+                     height=700,
+                     opacity=0.7,
+                     size=markersize,
+                     size_max=40)
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
