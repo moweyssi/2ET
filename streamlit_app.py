@@ -12,7 +12,7 @@ USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 
 
 # Load data
-@st.cache_data(ttl=1200)
+#@st.cache_data(ttl=1200)
 def load_data():
     # Replace with the path to your data file
     #df = pd.read_csv("Plna_databaze_produktu.csv")
