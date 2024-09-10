@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from io import StringIO, BytesIO
-import base64
-
+import plotly.io as pio
+pio.templates.default = "plotly"
 st.set_page_config(layout="wide")
 st.title("LOSEC Czechia Navigator")
 
@@ -221,6 +221,7 @@ st.subheader("Big picture:")
 st.code("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
         "CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
         "EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
+
 
 mybuff = StringIO()
 fig.write_html(mybuff, include_plotlyjs='cdn')
