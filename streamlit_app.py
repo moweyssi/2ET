@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from io import StringIO, BytesIO
+from io import StringIO
 import plotly.io as pio
-pio.templates.default = "plotly"
+pio.templates.default = "none"
 st.set_page_config(layout="wide")
 st.title("LOSEC Czechia Navigator")
 
