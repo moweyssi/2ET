@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 from io import StringIO
 import plotly.io as pio
-pio.templates.default = "none"
 st.set_page_config(layout="wide")
 st.title("LOSEC Czechia Navigator")
 
@@ -184,6 +183,8 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 HS_select = st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
+plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
+pio.templates.default = plotlystyle
 # Define hover data
 hover_data = {col: True for col in hover_info}
 if HS_select == []:
@@ -210,8 +211,7 @@ else:
                      height=700,
                      opacity=0.7,
                      size=markersize,
-                     size_max=40,
-                     color_discrete_sequence=["#0068c9","#83c9ff","#ff2b2b","#ffabab","#29b09d","#7defa1","#ff8700","#ffd16a","#6d3fc0","#d5dae5",]
+                     size_max=40
                      )
 
 st.plotly_chart(fig)
