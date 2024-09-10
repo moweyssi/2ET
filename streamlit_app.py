@@ -212,6 +212,7 @@ else:
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
+st.download_button("Download",fig.write_html("plot.html"))
 st.code("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
         "CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
         "EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
