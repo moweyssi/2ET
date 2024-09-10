@@ -214,15 +214,22 @@ else:
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
-#st.download_button("Download",fig.write_html("plot.html"))
 
-mybuff = StringIO()
-fig.write_html(mybuff, include_plotlyjs='cdn')
-mybuff = BytesIO(mybuff.getvalue().encode())
-b64 = base64.b64encode(mybuff.read()).decode()
-href = f'<a href="data:text/html;charset=utf-8;base64, {b64}" download="plot.html">Download plot</a>'
-st.markdown(href, unsafe_allow_html=True)
+
 st.code("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
         "CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
         "EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
 
+mybuff = StringIO()
+fig.write_html(mybuff, include_plotlyjs='cdn')
+html_bytes = mybuff.getvalue().encode()
+#mybuff = BytesIO(mybuff.getvalue().encode())
+#b64 = base64.b64encode(mybuff.read()).decode()
+#href = f'<a href="data:text/html;charset=utf-8;base64, {b64}" download="plot.html">Download plot</a>'
+#st.markdown(href, unsafe_allow_html=True)
+st.download_button(
+    label = "Download HTML",
+    data = html_bytes,
+    file_name = "plot.html",
+    mime="text/html"
+)
