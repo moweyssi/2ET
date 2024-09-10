@@ -210,7 +210,9 @@ else:
                      height=700,
                      opacity=0.7,
                      size=markersize,
-                     size_max=40)
+                     size_max=40,
+                     color_discrete_sequence=["#0068c9","#83c9ff","#ff2b2b","#ffabab","#29b09d","#7defa1","#ff8700","#ffd16a","#6d3fc0","#d5dae5",]
+                     )
 
 st.plotly_chart(fig)
 st.subheader("Big picture:")
