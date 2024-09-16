@@ -212,7 +212,7 @@ hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 # Sidebar for filtering the color variable
 color_values    = df[color].unique()
 selected_colors = st.sidebar.multiselect(f"Filter by {color_display}", options=color_values, default=color_values)
-st.text(color_values)
+
 # Filter section
 if 'filters' not in st.session_state:
     st.session_state.filters = []
