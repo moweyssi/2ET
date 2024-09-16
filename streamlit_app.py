@@ -11,7 +11,14 @@ st.sidebar.header("Select Variables for Scatter Plot")
 
 USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 
-
+color_discrete_map = {
+    'category1': '#636EFA',  # Example color for category1
+    'category2': '#EF553B',  # Example color for category2
+    'category3': '#00CC96',  # Example color for category3
+    'category4': '#AB63FA',  # Example color for category4
+    'category5': '#FFA15A'   # Example color for category5
+    # Add more categories and their corresponding colors as needed
+}
 # Load data
 def load_data():
     # Replace with the path to your data file
@@ -140,7 +147,7 @@ hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 # Sidebar for filtering the color variable
 color_values    = df[color].unique()
 selected_colors = st.sidebar.multiselect(f"Filter by {color_display}", options=color_values, default=color_values)
-
+st.text(color_values)
 # Filter section
 if 'filters' not in st.session_state:
     st.session_state.filters = []
@@ -192,6 +199,7 @@ if HS_select == []:
                      x=x_axis,
                      y=y_axis,
                      color=color,
+                     color_discrete_map=color_discrete_map,  # Hard-code the colors
                      labels={x_axis: x_axis_display, y_axis: y_axis_display},
                      title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
@@ -205,6 +213,7 @@ else:
                      x=x_axis,
                      y=y_axis,
                      color=color,
+                     color_discrete_map=color_discrete_map,  # Hard-code the colors
                      labels={x_axis: x_axis_display, y_axis: y_axis_display},
                      title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
