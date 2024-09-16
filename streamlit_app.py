@@ -10,14 +10,79 @@ st.title("LOSEC Czechia Navigator")
 st.sidebar.header("Select Variables for Scatter Plot")
 
 USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
-
 color_discrete_map = {
-    'category1': '#636EFA',  # Example color for category1
-    'category2': '#EF553B',  # Example color for category2
-    'category3': '#00CC96',  # Example color for category3
-    'category4': '#AB63FA',  # Example color for category4
-    'category5': '#FFA15A'   # Example color for category5
-    # Add more categories and their corresponding colors as needed
+    # Doprava (Transportation) - Various shades of orange/red
+    'A02. Doprava': '#E63946',  # Bright red for transportation in general
+    'A02c. Cyklistika a jednostopá': '#FF6F61',  # Lighter red for cycling
+    'A02a. Železniční (osobní i nákladní)': '#C0362C',  # Deep red for railways
+    'Nové lokomotivy a vozy': '#FF8B74',  # Lighter shade for new trains
+
+    # Budovy (Buildings) - Shades of brown and earth tones
+    'A03. Budovy': '#8D8741',  # Earthy brown for buildings
+    'A03a. Snižování energetické náročnosti budov': '#BDB76B',  # Olive green for energy efficiency
+    'Zateplení, izolace': '#A1887F',  # Soft brown for insulation
+    'A03b. Elektrifikace tepelného hospodářství': '#D4A373',  # Lighter brown for heat management
+    'A03b. Elektrifikace domácností': '#F4A261',  # Warm tone for household electrification
+
+    # Výroba nízkoemisní elektřiny a paliv (Low-emission energy & fuels) - Green/Blue palette
+    'A04. Výroba nízkoemisní elektřiny a paliv': '#2A9D8F',  # Green for clean energy production
+    'A04a. Větrná': '#3AAFA9',  # Turquoise for wind energy
+    'A04b. Solární': '#E9C46A',  # Yellow for solar energy
+    'A04c. Vodní': '#0096C7',  # Blue for hydro energy
+    'A04f. Jádro': '#264653',  # Dark blue for nuclear
+    'A04g. Efektivní využití plynu a vodíku': '#00B4D8',  # Light blue for gas and hydrogen
+    'Komponenty pro větrnou energetiku': '#48CAE4',  # Sky blue for wind components
+    'Komponenty pro solární energetiku': '#F4A261',  # Orange for solar components
+    'Komponenty pro vodní energetiku': '#0096C7',  # Blue for water components
+    'Komponenty pro jadernou energetiku': '#264653',  # Nuclear components
+
+    # Ukládání energie (Energy storage) - Purples for storage and related technology
+    'A05. Ukládání energie': '#9B5DE5',  # Purple for energy storage
+    'A05a. Baterie': '#D45D79',  # Magenta for batteries
+    'A05b. Vodik a čpavek': '#7209B7',  # Deep purple for hydrogen storage
+    'A05c. Ostatní ukládání': '#3A0CA3',  # Dark purple for other storage
+    'Ostatní ukládání (přečerpávací vodní, ohřátá voda,…)': '#7B2CBF',  # Storage alternatives
+
+    # Energetické sítě (Energy networks) - Dark greens
+    'A06. Energetické sítě': '#2C6E49',  # Dark green for energy grids
+    'A06a. Distribuce a přenos elektřiny': '#377771',  # Medium green for distribution
+    'Transformační stanice a další síťové komponenty': '#55A630',  # Bright green for components
+
+    # Měření a diagnostické přístroje (Measurement and diagnostics) - Blues and teals
+    'E01. Měřící a diagnostické přístroje; Monitoring': '#4A90E2',  # Light blue for measurement
+    'E01a. Optická měření (HS 9000 - 9013, HS 903140)': '#00B4D8',  # Light blue for optical measurements
+    'E0f. Měření v energetice a síťových odvětvích (HS9028 - 9030, 903210)': '#0077B6',  # Blue for energy measurements
+    'E01c. Měření okolního prostředí (HS9025)': '#2A9D8F',  # Greenish-blue for environment measurement
+    'E01d. Měření vlastností plynů a tekutin (HS9026)': '#168AAD',  # Aqua for gas and liquid measurement
+    'E01e. Chemická analýza (HS9027)': '#9C89B8',  # Light purple for chemical analysis
+    'E01h. Surveying / Zeměměřičství (HS 9015)': '#4C3A51',  # Dark purple for surveying
+    'Surveying / Zeměměřičství': '#4C3A51',  # Same for consistency
+    'E01i. Ostatní (HS 903x, a další)': '#757575',  # Grey for "Other" category
+
+    # Cirkularita a odpady (Circularity and waste) - Browns and earthy tones
+    'B02. Cirkularita a odpady': '#6A994E',  # Greenish brown for circularity
+    'B02b. Cirkularita, využití odpadu': '#8A9A5B',  # Olive green for waste use
+    'Materiálové využití': '#8D8741',  # Brown for material use
+
+    # Výroba (Low-emission manufacturing) - Shades of gray and steel tones
+    'A01. Výroba, nízkoemisní výrobní postupy': '#5C5C5C',  # Steel gray for manufacturing
+    'A01a. Nízkoemisní výroba': '#4F4F4F',  # Darker gray for low-emission manufacturing
+    'A01c. Elektrifikace výrobních postupů': '#6E6E6E',  # Lighter gray for electrification of processes
+    'Elektrifikace ve výrobě': '#8A8D8F',  # Light gray for manufacturing electrification
+    'Nízkoemisní výroby ostatní': '#555555',  # Dark steel gray for other low-emission production
+
+    # Miscellaneous
+    'Díly a vybavení': '#FFBF69',  # Peach for parts and equipment
+    'Termostaty': '#F28F3B',  # Orange for thermostats
+    'Termometry': '#F4A261',  # Light orange for thermometers
+    'Spektrometry': '#B5838D',  # Muted purple for spectrometry
+    'Měření ionizujícího záření': '#B5179E',  # Bright pink for radiation measurement
+    'Osciloskopy': '#7209B7',  # Purple for oscilloscopes
+    'Měření odběru a výroby plynů, tekutin, elektřiny': '#457B9D',  # Light blue for gas and fluid measurement
+    'Chromatografy': '#B07D62',  # Warm brown for chromatography
+    'Domácí elektrické spotřebiče': '#F4A261',  # Warm orange for household appliances
+    'Hydrometry': '#0096C7',  # Blue for hydrometry
+    'Ostatní': '#6D6875',  # Neutral gray for "other"
 }
 # Load data
 def load_data():
