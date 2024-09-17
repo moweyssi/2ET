@@ -11,14 +11,14 @@ st.sidebar.header("Select Variables for Scatter Plot")
 
 USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 color_discrete_map = {
-    'A02. Doprava': '#F0A0FF',
-    'A03. Budovy': '#0075DC',
-    'A04. Výroba nízkoemisní elektřiny a paliv': '#993F00',
-    'A05. Ukládání energie': '#4C005C',
-    'A06. Energetické sítě': '#191919',
-    'E01. Měřící a diagnostické přístroje; Monitoring': '#005C31',
-    'A01. Výroba, nízkoemisní výrobní postupy': '#2BCE48',
-    'B02. Cirkularita a odpady': '#FFCC99',
+    'A02. Doprava': '#274001',
+    'A03. Budovy': '#828a00',
+    'A04. Výroba nízkoemisní elektřiny a paliv': '#f29f05',
+    'A05. Ukládání energie': '#f25c05',
+    'A06. Energetické sítě': '#d6568c',
+    'E01. Měřící a diagnostické přístroje; Monitoring': '#4d8584',
+    'A01. Výroba, nízkoemisní výrobní postupy': '#a62f03',
+    'B02. Cirkularita a odpady': '#400d01',
 
     'A02c. Cyklistika a jednostopá': '#808080',
     'A03a. Snižování energetické náročnosti budov': '#94FFB5',
