@@ -11,73 +11,71 @@ st.sidebar.header("Select Variables for Scatter Plot")
 
 USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
 color_discrete_map = {
-    # Set 1
-    'A02. Doprava': '#FFB3BA',  # Pastel red for transportation
-    'A03. Budovy': '#FFDFBA',   # Pastel orange for buildings
-    'A04. Výroba nízkoemisní elektřiny a paliv': '#FFFFBA',  # Pastel yellow for low-emission energy
-    'A05. Ukládání energie': '#BAFFC9',  # Pastel green for energy storage
-    'A06. Energetické sítě': '#BAE1FF',  # Pastel blue for energy grids
-    'E01. Měřící a diagnostické přístroje; Monitoring': '#FFB3E6',  # Pastel pink for monitoring
-    'A01. Výroba, nízkoemisní výrobní postupy': '#FFB3FF',  # Pastel magenta for low-emission manufacturing
-    'B02. Cirkularita a odpady': '#E6FFB3',  # Pastel lime for circularity and waste
+    'A02. Doprava': '#fdb913',  
+    'A03. Budovy': '#2f8ecd',   
+    'A04. Výroba nízkoemisní elektřiny a paliv': '#8cc758',  
+    'A05. Ukládání energie': '#ea4373',  
+    'A06. Energetické sítě': '#2a2968',  
+    'E01. Měřící a diagnostické přístroje; Monitoring': '#432376',  
+    'A01. Výroba, nízkoemisní výrobní postupy': '#c71651',  
+    'B02. Cirkularita a odpady': '#e19615',  
 
-    # Set 2
-    'A02c. Cyklistika a jednostopá': '#FFB3BA',  # Same pastel red for cycling
-    'A03a. Snižování energetické náročnosti budov': '#FFDFBA',  # Same pastel orange for energy efficiency in buildings
-    'A04f. Jádro': '#FFFFBA',  # Same pastel yellow for nuclear
-    'A05b. Vodik a čpavek': '#BAFFC9',  # Same pastel green for hydrogen and ammonia
-    'A06a. Distribuce a přenos elektřiny': '#BAE1FF',  # Same pastel blue for electricity distribution
-    'A04a. Větrná': '#FFB3E6',  # Same pastel pink for wind energy
-    'E0f. Měření v energetice a síťových odvětvích (HS9028 - 9030, 903210)': '#FFB3FF',  # Same pastel magenta for energy measurement
-    'E01c. Měření okolního prostředí (HS9025)': '#E6FFB3',  # Same pastel lime for environmental measurement
-    'E01i. Ostatní': '#FFB347',  # Pastel peach for "other"
-    'A02a. Železniční (osobní i nákladní)': '#FFCCCB',  # Light pastel red for railways
-    'E01h. Surveying / Zeměměřičství (HS 9015)': '#FFDAC1',  # Light pastel orange for surveying
-    'A01a. Nízkoemisní výroba': '#FFFACD',  # Light pastel yellow for low-emission manufacturing
-    'A04g. Efektivní využití plynu a vodíku': '#B0E57C',  # Pastel green for efficient gas and hydrogen usage
-    'E01e. Chemická analýza (HS9027)': '#B2FFFF',  # Light pastel blue for chemical analysis
-    'A04b. Solární': '#FFB347',  # Pastel peach for solar
-    'A03b. Elektrifikace tepelného hospodářství': '#F1C0E8',  # Pastel lavender for heat electrification
-    'A05a. Baterie': '#C9E7FF',  # Light pastel blue for batteries
-    'E01d. Měření vlastností plynů a tekutnin (HS9026)': '#FFC9DE',  # Light pastel pink for gas & liquid measurement
-    'E01a. Optická měření (HS 9000 - 9013, HS 903140)': '#FFD1BA',  # Pastel light orange for optical measurements
-    'B02b. Cirkularita, využití odpadu': '#E5FFCC',  # Light pastel lime for waste circularity
-    'A05c. Ostatní ukládání': '#FFE5B4',  # Light pastel peach for other storage
-    'A01c. Elektrifikace výrobních postupů': '#FFC3A0',  # Pastel peach for electrification of processes
-    'A03b. Elektrifikace domácností': '#FFDFD3',  # Light pastel pink for household electrification
+    'A02c. Cyklistika a jednostopá': '#fdb913',  
+    'A03a. Snižování energetické náročnosti budov': '#2f8ecd',  
+    'A04f. Jádro': '#8cc758',  
+    'A05b. Vodik a čpavek': '#ea4373',  
+    'A06a. Distribuce a přenos elektřiny': '#2a2968',  
+    'A04a. Větrná': '#432376',  
+    'E0f. Měření v energetice a síťových odvětvích (HS9028 - 9030, 903210)': '#c71651',  
+    'E01c. Měření okolního prostředí (HS9025)': '#e19615',  
+    'E01i. Ostatní': '#a6ae11',  
+    'A02a. Železniční (osobní i nákladní)': '#449488',  
+    'E01h. Surveying / Zeměměřičství (HS 9015)': '#e0e800',  
+    'A01a. Nízkoemisní výroba': '#87e300',  
+    'A04g. Efektivní využití plynu a vodíku': '#006aff',  
+    'E01e. Chemická analýza (HS9027)': '#000082',  
+    'A04b. Solární': '#9656ea',  
+    'A03b. Elektrifikace tepelného hospodářství': '#0032db',  
+    'A05a. Baterie': '#0689e4',  
+    'E01d. Měření vlastností plynů a tekutnin (HS9026)': '#71ab23',  
+    'E01a. Optická měření (HS 9000 - 9013, HS 903140)': '#fbb905',  
+    'B02b. Cirkularita, využití odpadu': '#d55e0f',  
+    'A05c. Ostatní ukládání': '#fdb913',  
+    'A01c. Elektrifikace výrobních postupů': '#2f8ecd',  
+    'A03b. Elektrifikace domácností': '#8cc758',  
 
-    # Set 3
-    'Díly a vybavení': '#FFB3BA',  # Same pastel red for parts and equipment
-    'Zateplení, izolace': '#FFDFBA',  # Same pastel orange for insulation
-    'Komponenty pro jadernou energetiku': '#FFFFBA',  # Same pastel yellow for nuclear components
-    'Vodík (elektrolyzéry)': '#BAFFC9',  # Same pastel green for hydrogen electrolysis
-    'Transformační stanice a další síťové komponenty': '#BAE1FF',  # Same pastel blue for network components
-    'Komponenty pro větrnou energetiku': '#FFB3E6',  # Same pastel pink for wind components
-    'Termostaty': '#FFB3FF',  # Same pastel magenta for thermostats
-    'Termometry': '#E6FFB3',  # Same pastel lime for thermometers
-    'Ostatní': '#FFB347',  # Same pastel peach for others
-    'Nové lokomotivy a vozy': '#FFCCCB',  # Light pastel red for new locomotives
-    'Surveying / Zeměměřičství': '#FFDAC1',  # Light pastel orange for surveying equipment
-    'Nízkoemisní výroby ostatní': '#FFFACD',  # Light pastel yellow for other low-emission production
-    'Komponenty pro výrobu energie z plynů': '#B0E57C',  # Pastel green for gas energy components
-    'Spektrometry': '#B2FFFF',  # Light pastel blue for spectrometry
-    'Komponenty pro solární energetiku': '#FFB347',  # Pastel peach for solar components
-    'Tepelná čerpadla a HVAC': '#F1C0E8',  # Pastel lavender for heat pumps and HVAC
-    'Infrastruktura (nové tratě a elektrifikace stávajících)': '#C9E7FF',  # Light pastel blue for infrastructure
-    'Baterie': '#FFC9DE',  # Light pastel pink for batteries
-    'Měření odběru a výroby plynů, tekutin, elektřiny': '#FFD1BA',  # Light pastel orange for energy measurements
-    'Komponenty pro vodní energetiku': '#E5FFCC',  # Light pastel lime for water energy components
-    'Měření vlastností plynů a tekutin': '#FFE5B4',  # Light pastel peach for gas & liquid measurements
-    'Optická měření': '#FFC3A0',  # Pastel peach for optical measurements
-    'Materiálové využití': '#FFDFD3',  # Light pastel pink for material use
-    'Měření ionizujícího záření': '#FFB3BA',  # Pastel red for radiation measurements
-    'Ostatní ukládání (přečerpávací vodní, ohřátá voda,…)': '#FFDFBA',  # Same pastel orange for other storage
-    'Hydrometry': '#FFFFBA',  # Same pastel yellow for hydrometry
-    'Elektrifikace ve výrobě': '#BAFFC9',  # Same pastel green for electrification in manufacturing
-    'Domácí elektrické spotřebiče': '#BAE1FF',  # Same pastel blue for household appliances
-    'Chromatografy': '#FFB3E6',  # Same pastel pink for chromatographs
-    'Osciloskopy': '#FFB3FF',  # Same pastel magenta for oscilloscopes
+    'Díly a vybavení': '#ea4373',  
+    'Zateplení, izolace': '#2a2968',  
+    'Komponenty pro jadernou energetiku': '#432376',  
+    'Vodík (elektrolyzéry)': '#c71651',  
+    'Transformační stanice a další síťové komponenty': '#e19615',  
+    'Komponenty pro větrnou energetiku': '#a6ae11',  
+    'Termostaty': '#449488',  
+    'Termometry': '#e0e800',  
+    'Ostatní': '#87e300',  
+    'Nové lokomotivy a vozy': '#006aff',  
+    'Surveying / Zeměměřičství': '#000082',  
+    'Nízkoemisní výroby ostatní': '#9656ea',  
+    'Komponenty pro výrobu energie z plynů': '#0032db',  
+    'Spektrometry': '#0689e4',  
+    'Komponenty pro solární energetiku': '#71ab23',  
+    'Tepelná čerpadla a HVAC': '#fbb905',  
+    'Infrastruktura (nové tratě a elektrifikace stávajících)': '#d55e0f',  
+    'Baterie': '#fdb913',  
+    'Měření odběru a výroby plynů, tekutin, elektřiny': '#2f8ecd',  
+    'Komponenty pro vodní energetiku': '#8cc758',  
+    'Měření vlastností plynů a tekutin': '#ea4373',  
+    'Optická měření': '#2a2968',  
+    'Materiálové využití': '#432376',  
+    'Měření ionizujícího záření': '#c71651',  
+    'Ostatní ukládání (přečerpávací vodní, ohřátá voda,…)': '#e19615',  
+    'Hydrometry': '#a6ae11',  
+    'Elektrifikace ve výrobě': '#449488',  
+    'Domácí elektrické spotřebiče': '#e0e800',  
+    'Chromatografy': '#87e300',  
+    'Osciloskopy': '#006aff',  
 }
+
 
 # Load data
 def load_data():
