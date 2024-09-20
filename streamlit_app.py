@@ -248,7 +248,6 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-st.dataframe(filtered_df)
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
 plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 pio.templates.default = plotlystyle
