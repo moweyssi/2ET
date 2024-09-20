@@ -260,7 +260,7 @@ if HS_select == []:
                      color=color,
                      color_discrete_map=color_discrete_map,  # Hard-code the colors
                      labels={x_axis: x_axis_display, y_axis: y_axis_display},
-                     title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
+                     #title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
                      height=700,
                      opacity=0.7,
