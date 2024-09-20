@@ -162,6 +162,7 @@ plot_display_names = [
 hover_display_data = [
     'HS_ID',
     'Produkt_HS6',
+    'Produkt_HS6_CZ',
     'Produkt_HS4',
     'Produkt_HS2',
     'CZ Celkový Export 25-30 CZK',
