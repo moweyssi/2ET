@@ -251,11 +251,12 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Produkt_HS6_CZ'])
 plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 pio.templates.default = plotlystyle
-# Define hover data
+# Initialize the hover_data dictionary with default values of False for x, y, and markersize
 hover_data = {col: True for col in hover_info}
-hover_data[x_axis]=False
-hover_data[y_axis]=False
-hover_data[markersize]=False
+# Ensure x_axis, y_axis, and markersize default to False if not explicitly provided in hover_info
+hover_data.setdefault(x_axis, False)
+hover_data.setdefault(y_axis, False)
+hover_data.setdefault(markersize, False)
 
 if HS_select == []:
     fig = px.scatter(filtered_df,
