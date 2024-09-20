@@ -4,10 +4,10 @@ import plotly.express as px
 from io import StringIO
 import plotly.io as pio
 st.set_page_config(layout="wide")
-st.title("LOSEC Czechia Navigator")
+st.title("Mapa Příležitostí")
 
 # Sidebar for selecting variables
-st.sidebar.header("Select Variables for Scatter Plot")
+st.sidebar.header("Nastavení Grafu")
 
 USD_to_czk = st.sidebar.number_input("Kurz USD vůči CZK",value=22.5)
 color_discrete_map = {
