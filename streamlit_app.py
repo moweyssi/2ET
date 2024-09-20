@@ -248,7 +248,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-HS_select = st.multiselect("Filter HS6 Codes",filtered_df['Produkt_HS6'])
+HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Produkt_HS6_CZ'])
 plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 pio.templates.default = plotlystyle
 # Define hover data
