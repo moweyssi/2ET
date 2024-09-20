@@ -290,9 +290,9 @@ else:
 
 fig.update_layout(
     hoverlabel=dict(
-        bgcolor="white",
+        #bgcolor="white",
         font_size=16,
-        font_family="Rockwell"
+        font_family="verdana"
     )
 )
 st.plotly_chart(fig)
