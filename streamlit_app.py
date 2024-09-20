@@ -162,7 +162,7 @@ plot_display_names = [
 hover_display_data = [
     'HS_ID',
     'Produkt_HS6',
-    'Produkt_HS6_CZ',
+    'Název Produktu',
     'Produkt_HS4',
     'Produkt_HS2',
     'CZ Celkový Export 25-30 CZK',
@@ -194,7 +194,7 @@ x_axis_display      = st.sidebar.selectbox("Select X-axis variable", plot_displa
 y_axis_display      = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
 markersize_display  = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
 color_display       = st.sidebar.selectbox("Select color variable", ji_display_names)
-hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6_CZ')
+hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Název Produktu')
 
 # Map display names back to column names
 x_axis     = display_to_column[x_axis_display]
@@ -248,7 +248,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 # Remove NA values
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
-HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Produkt_HS6_CZ'])
+HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
 plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
@@ -274,7 +274,7 @@ if HS_select == []:
     
 
 else:
-    fig = px.scatter(filtered_df[filtered_df['Produkt_HS6_CZ'].isin(HS_select)],
+    fig = px.scatter(filtered_df[filtered_df['Název Produktu'].isin(HS_select)],
                      x=x_axis,
                      y=y_axis,
                      color=color,
