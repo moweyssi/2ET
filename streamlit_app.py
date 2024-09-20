@@ -194,7 +194,7 @@ x_axis_display      = st.sidebar.selectbox("Select X-axis variable", plot_displa
 y_axis_display      = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
 markersize_display  = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
 color_display       = st.sidebar.selectbox("Select color variable", ji_display_names)
-hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6')
+hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Produkt_HS6_CZ')
 
 # Map display names back to column names
 x_axis     = display_to_column[x_axis_display]
