@@ -9,7 +9,7 @@ st.title("LOSEC Czechia Navigator")
 # Sidebar for selecting variables
 st.sidebar.header("Select Variables for Scatter Plot")
 
-USD_to_czk = st.sidebar.number_input("USD to CZK",value=22.5)
+USD_to_czk = st.sidebar.number_input("Kurz USD vůči CZK",value=22.5)
 color_discrete_map = {
     'A02. Doprava': '#d6568c',
     'A03. Budovy': '#274001',
@@ -190,11 +190,11 @@ hover_display_data = [
 ]
 
 # Sidebar selection boxes using display names
-x_axis_display      = st.sidebar.selectbox("Select X-axis variable", plot_display_names, index=0)
-y_axis_display      = st.sidebar.selectbox("Select Y-axis variable", plot_display_names, index=2)
-markersize_display  = st.sidebar.selectbox("Select size variable", plot_display_names, index=14)
-color_display       = st.sidebar.selectbox("Select color variable", ji_display_names)
-hover_info_display  = st.sidebar.multiselect("Select what info should appear on hover", hover_display_data, default='Název Produktu')
+x_axis_display      = st.sidebar.selectbox("Vyber osu X:", plot_display_names, index=0)
+y_axis_display      = st.sidebar.selectbox("Vyber osu Y:", plot_display_names, index=2)
+markersize_display  = st.sidebar.selectbox("Velikost dle:", plot_display_names, index=14)
+color_display       = st.sidebar.selectbox("Barva dle:", ji_display_names)
+hover_info_display  = st.sidebar.multiselect("Co se zobrazí při najetí myší:", hover_display_data, default='Název Produktu')
 
 # Map display names back to column names
 x_axis     = display_to_column[x_axis_display]
@@ -205,7 +205,7 @@ hover_info = [display_to_column.get(col, col) for col in hover_info_display]
 
 # Sidebar for filtering the color variable
 color_values    = df[color].unique()
-selected_colors = st.sidebar.multiselect(f"Filter by {color_display}", options=color_values, default=color_values)
+selected_colors = st.sidebar.multiselect(f"Filtrovat dle: {color_display}", options=color_values, default=color_values)
 
 # Filter section
 if 'filters' not in st.session_state:
@@ -249,7 +249,7 @@ filtered_df[markersize] = filtered_df[markersize].clip(lower=0)
 filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
-plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
+plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
 hover_data = {col: True for col in hover_info}
@@ -299,16 +299,16 @@ st.plotly_chart(fig)
 st.subheader("Big picture:")
 
 
-st.code("CZ Export 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
-        "CZ 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
-        "EU 2025 - 2030 Export: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
+st.code("Vybraný český export za rok 2022: "+ "{:,.0f}".format(sum(filtered_df['CZ_export_2022']))+" CZK\n"+
+        "Vybraný český export 2025 až 2030: "+ "{:,.0f}".format(sum(filtered_df['CZ_Total_Export_25_30']))+" CZK\n"+
+        "Vybraný evropský export 2025 až 203: "+ "{:,.0f}".format(sum(filtered_df['EU_Total_Export_25_30']))+" CZK")
 
 
 mybuff = StringIO()
 fig.write_html(mybuff, include_plotlyjs='cdn')
 html_bytes = mybuff.getvalue().encode()
 st.download_button(
-    label = "Download HTML",
+    label = "Stáhnout HTML",
     data = html_bytes,
     file_name = "plot.html",
     mime="text/html"
