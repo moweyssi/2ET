@@ -253,6 +253,8 @@ plotlystyle = st.sidebar.selectbox("Graph style",["plotly_dark","plotly","ggplot
 pio.templates.default = plotlystyle
 # Define hover data
 hover_data = {col: True for col in hover_info}
+hover_data[x_axis]=False
+hover_data[y_axis]=False
 if HS_select == []:
     fig = px.scatter(filtered_df,
                      x=x_axis,
