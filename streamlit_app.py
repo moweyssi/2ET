@@ -271,6 +271,7 @@ if HS_select == []:
                      opacity=0.7,
                      size=markersize,
                      size_max=40)
+    
 
 else:
     fig = px.scatter(filtered_df[filtered_df['Produkt_HS6'].isin(HS_select)],
@@ -287,6 +288,13 @@ else:
                      size_max=40
                      )
 
+fig.update_layout(
+    hoverlabel=dict(
+        bgcolor="white",
+        font_size=16,
+        font_family="Rockwell"
+    )
+)
 st.plotly_chart(fig)
 st.subheader("Big picture:")
 
