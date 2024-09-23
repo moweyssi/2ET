@@ -294,9 +294,13 @@ fig.update_layout(
         #font_size=16,
         font_family="verdana"
     ),
-    legend=dict(
-                orientation="h"),
-    #legend_tracegroupgap=50
+        legend=dict(
+        orientation="h",  # Horizontal legend
+        yanchor="top",    # Align the legend's top with the graph's bottom
+        y=-0.2,           # Push the legend further below (negative moves it below the plot)
+        xanchor="center", # Center the legend horizontally
+        x=0.5             # Position it at the center of the graph
+    )
     
                 
 )
