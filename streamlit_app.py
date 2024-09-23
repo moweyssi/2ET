@@ -5,7 +5,13 @@ from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
 st.title("Mapa Příležitostí")
-
+st.markdown("""
+<style>
+body {
+    background-color: #0D1A27;
+}
+</style>
+""", unsafe_allow_html=True)
 # Sidebar for selecting variables
 st.sidebar.header("Nastavení Grafu")
 
