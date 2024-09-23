@@ -267,7 +267,7 @@ if HS_select == []:
                      labels={x_axis: x_axis_display, y_axis: y_axis_display},
                      #title=f'{x_axis_display} vs {y_axis_display} barva podle {color_display}',
                      hover_data=hover_data,
-                     #height=700,
+                     height='100%',
                      opacity=0.7,
                      size=markersize,
                      size_max=40)
