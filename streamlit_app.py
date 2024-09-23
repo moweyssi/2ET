@@ -270,7 +270,7 @@ if HS_select == []:
                      #height='100%',
                      opacity=0.7,
                      size=markersize,
-                     size_max=40)
+                     size_max=40, equal_axes=True)
     
 
 else:
@@ -285,7 +285,7 @@ else:
                      #height=700,
                      opacity=0.7,
                      size=markersize,
-                     size_max=40
+                     size_max=40, equal_axes=True
                      )
 
 fig.update_layout(
