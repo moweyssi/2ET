@@ -297,7 +297,7 @@ fig.update_layout(
         legend=dict(
         orientation="h",  # Horizontal legend
         yanchor="top",    # Align the legend's top with the graph's bottom
-        y=-0.2,           # Push the legend further below (negative moves it below the plot)
+        y=-0.3,           # Push the legend further below (negative moves it below the plot)
         xanchor="center", # Center the legend horizontally
         x=0.5             # Position it at the center of the graph
     )
