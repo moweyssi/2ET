@@ -295,7 +295,8 @@ fig.update_layout(
         font_family="verdana"
     ),
     legend=dict(
-                orientation="h")
+                orientation="h"),
+    margin = dict(b = 140)
                 
 )
 st.plotly_chart(fig)
