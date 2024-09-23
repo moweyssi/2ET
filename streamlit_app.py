@@ -270,7 +270,8 @@ if HS_select == []:
                      #height='100%',
                      opacity=0.7,
                      size=markersize,
-                     size_max=40)
+                     size_max=40,
+                     margin = dict(b = 140))
     
 
 else:
@@ -295,8 +296,8 @@ fig.update_layout(
         font_family="verdana"
     ),
     legend=dict(
-                orientation="h"),
-    margin = dict(b = 140)
+                orientation="h")
+    
                 
 )
 st.plotly_chart(fig)
