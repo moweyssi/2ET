@@ -300,8 +300,7 @@ fig.update_layout(
         y=-0.3,           # Push the legend further below (negative moves it below the plot)
         xanchor="center", # Center the legend horizontally
         x=0.5             # Position it at the center of the graph
-    ),
-    aspectratio=dict(x=1, y=1),
+    )
     
                 
 )
