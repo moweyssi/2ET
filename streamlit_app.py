@@ -250,6 +250,7 @@ filtered_df = filtered_df.dropna(subset=[x_axis, y_axis, color, markersize])
 
 HS_select = st.multiselect("Filtrovat HS6 kódy",filtered_df['Název Produktu'])
 plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot2","seaborn","simple_white","none"])
+background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
 hover_data = {col: True for col in hover_info}
@@ -300,7 +301,9 @@ fig.update_layout(
         y=-0.3,           # Push the legend further below (negative moves it below the plot)
         xanchor="center", # Center the legend horizontally
         x=0.5             # Position it at the center of the graph
-    )
+    ),
+    plot_bgcolor=background_color,
+    paper_bgcolor = background_color
     
                 
 )
