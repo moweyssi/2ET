@@ -270,8 +270,7 @@ if HS_select == []:
                      #height='100%',
                      opacity=0.7,
                      size=markersize,
-                     size_max=40,
-                     margin = dict(b = 140))
+                     size_max=40)
     
 
 else:
