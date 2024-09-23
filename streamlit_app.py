@@ -293,7 +293,10 @@ fig.update_layout(
         #bgcolor="white",
         font_size=16,
         font_family="verdana"
-    )
+    ),
+    legend=dict(
+                orientation="h")
+                
 )
 st.plotly_chart(fig)
 st.subheader("Big picture:")
