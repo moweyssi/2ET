@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from io import StringIO
 import plotly.io as pio
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 st.title("Mapa Příležitostí")
 
 # Sidebar for selecting variables
