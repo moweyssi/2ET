@@ -5,13 +5,7 @@ from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
 st.title("Mapa Příležitostí")
-st.markdown("""
-<style>
-body {
-    background-color: #0D1A27;
-}
-</style>
-""", unsafe_allow_html=True)
+
 # Sidebar for selecting variables
 st.sidebar.header("Nastavení Grafu")
 
@@ -306,7 +300,8 @@ fig.update_layout(
         y=-0.3,           # Push the legend further below (negative moves it below the plot)
         xanchor="center", # Center the legend horizontally
         x=0.5             # Position it at the center of the graph
-    )
+    ),
+    plot_bgcolor='#0D1A27'
     
                 
 )
