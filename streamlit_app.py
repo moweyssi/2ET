@@ -296,7 +296,7 @@ fig.update_layout(
     ),
     legend=dict(
                 orientation="h"),
-    legend_tracegroupgap=50
+    #legend_tracegroupgap=50
     
                 
 )
