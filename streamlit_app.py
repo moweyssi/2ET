@@ -300,9 +300,7 @@ fig.update_layout(
         y=-0.3,           # Push the legend further below (negative moves it below the plot)
         xanchor="center", # Center the legend horizontally
         x=0.5             # Position it at the center of the graph
-    ),
-    plot_bgcolor='#0D1A27',
-    paper_bgcolor = '#0D1A27'
+    )
     
                 
 )
