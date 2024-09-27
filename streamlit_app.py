@@ -5,7 +5,7 @@ from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
 st.title("Mapa Příležitostí")
-
+st.markdown('<i style="color:red;">Toto je pracovní verze. Projekce 2025-30 prosíme brát s velikou rezervou</i>', unsafe_allow_html=True)
 # Sidebar for selecting variables
 st.sidebar.header("Nastavení Grafu")
 
