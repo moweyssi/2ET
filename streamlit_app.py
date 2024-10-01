@@ -257,7 +257,7 @@ plotlystyle = st.sidebar.selectbox("Styl grafu:",["plotly_dark","plotly","ggplot
 background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841'])
 # Create a button in the sidebar that clears the cache
 
-colu1, colu2 = st.columns(2)
+colu1, colu2 = st.columns(3)
 with colu1:
     if st.sidebar.button('Reload Data'):
         load_data.clear()  # This will clear the cache for the load_data function
