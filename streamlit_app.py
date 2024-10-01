@@ -4,7 +4,7 @@ import plotly.express as px
 from io import StringIO
 import plotly.io as pio
 #st.set_page_config(layout="wide")
-st.warning('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z CEPII. Projekce 2025-30 berte s velikou rezervou', icon="⚠️")
+st.warning('Toto je pracovní verze. Data s vyjímkou budoucího růstu pochází z OEC. Projekce 2025-30 berte s velikou rezervou', icon="⚠️")
 
 st.title("Mapa Příležitostí")
 
