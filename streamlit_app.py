@@ -258,10 +258,12 @@ background_color = st.sidebar.selectbox('Barva pozadí',[None,'#0D1A27','#112841
 # Create a button in the sidebar that clears the cache
 
 colu1, colu2 = st.columns(2)
-if colu1.sidebar.button('Reload Data'):
-    load_data.clear()  # This will clear the cache for the load_data function
-    colu1.sidebar.write("Cache cleared!")
-debug = colu2.toggle('Show Debugging')
+with colu1:
+    if st.sidebar.button('Reload Data'):
+        load_data.clear()  # This will clear the cache for the load_data function
+        st.sidebar.write("Cache cleared!")
+with colu2:
+    debug = st.stoggle('Show Debug')
 
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
