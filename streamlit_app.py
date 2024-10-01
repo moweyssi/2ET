@@ -263,7 +263,7 @@ with colu1:
         load_data.clear()  # This will clear the cache for the load_data function
         st.sidebar.write("Cache cleared!")
 with colu2:
-    debug = st.stoggle('Show Debug')
+    debug = st.toggle('Show Debug')
 
 pio.templates.default = plotlystyle
 # Initialize the hover_data dictionary with default values of False for x, y, and markersize
